@@ -12,9 +12,9 @@ def download(url):
 	return r.text
 
 if __name__ == '__main__':
-	url = "http://elpais.com"
+	url = "https://sourceforge.net/projects/zorin-os/files/15"
 	r = download(url)
 	if r:
-		sys.stdout.write(r[:100])
+		sys.stdout.write(r[:1000000])
 	else:
 		sys.stdout.write("Nothing was retrieved.")
