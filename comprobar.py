@@ -1,5 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import requests
 import sys
+import argparse
 
 def download(url):
 
@@ -11,19 +15,28 @@ def download(url):
 
 	return r.text
 
-if __name__ == '__main__':
-	url = "https://sourceforge.net/projects/zorin-os/files/15"
-	txtfind = "Lite"
-	txtfind = "Core"
-	r = download(url)
-	if r:
-		web = r[:10000000]
-		q = web.find(txtfind)
-		if (q==-1):
-			sys.stdout.write("No existe...")
-		else:
-			sys.stdout.write("Encontrado...")
+#----------------------------------------------------------------------------------------------------------------
 
-		#sys.stdout.write(r[:1000000])
-	else:
-		sys.stdout.write("No existe.")
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description='%(prog)s is an ArgumentParser demo')
+
+    parser.add_argument("-w","--web", help="Página web", default = "https://sourceforge.net/projects/zorin-os/files/15")
+    parser.add_argument("-b","--buscar", help="Texto a buscar", default = "Lite")
+    args = parser.parse_args()
+
+    r = download(args.web)
+    if r:
+	    TextoWeb = r[:10000000]
+        
+	    q = TextoWeb.find(args.buscar)
+	    if (q==-1):
+		    sys.stdout.write("No existe el texto a buscar")
+	    else:
+		    sys.stdout.write("Texto encontrado en la web")
+
+	    #sys.stdout.write(r[:1000000])
+    else:
+	    sys.stdout.write("No existe la web.")
+
