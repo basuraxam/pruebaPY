@@ -24,7 +24,15 @@ if __name__ == '__main__':
 
     parser.add_argument("-w","--web", help="Página web", default = "https://sourceforge.net/projects/zorin-os/files/15")
     parser.add_argument("-b","--buscar", help="Texto a buscar", default = "Lite")
+    parser.add_argument("-t","--texto", help="Texto idenficativo", default = "Zorin 15 Lite")    
+    parser.add_argument("-f","--file", help="Fichero con las webs y busquedas definidas", default = "")
     args = parser.parse_args()
+
+
+    if args.file != "":
+        sys.stdout.write("Parametro aun no disponible, sera ignorado ( %s ) \n" % args.file)        
+
+    sys.stdout.write("Buscando: %s \n" % args.texto)
 
     r = download(args.web)
     if r:
@@ -32,11 +40,17 @@ if __name__ == '__main__':
         
 	    q = TextoWeb.find(args.buscar)
 	    if (q==-1):
-		    sys.stdout.write("No existe el texto a buscar")
+		    sys.stdout.write("No existe el texto a buscar. \n")
 	    else:
-		    sys.stdout.write("Texto encontrado en la web")
+		    sys.stdout.write("Texto encontrado en la web. \n")
 
 	    #sys.stdout.write(r[:1000000])
     else:
-	    sys.stdout.write("No existe la web.")
+	    sys.stdout.write("No existe la web. \n")
+
+    try:
+        input("Press enter to continue")
+    except SyntaxError:
+        pass
+
 
