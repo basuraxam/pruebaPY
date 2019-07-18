@@ -1,1 +1,4 @@
-<Comprobador><buscar id="zorin15lite" valor="lite" web="www.zorin.es">zorin 15 lite</buscar><buscar id="lmint192" valor="19.2" web="www.linuxmint.es">linux mint 19.2</buscar></Comprobador>
+<Comprobador>
+	<buscar id="zorin15lite" valor="lite" web="www.zorin.es">zorin 15 lite</buscar>
+	<buscar id="lmint192" valor="19.2" web="www.linuxmint.es">linux mint 19.2</buscar>
+</Comprobador>
